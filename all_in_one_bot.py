@@ -4,6 +4,11 @@ import asyncio
 import os
 from flask import Flask
 from threading import Thread
+from dotenv import load_dotenv
+
+
+# Load environment variables from .env file
+load_dotenv()
 
 # --- FLASK WEB SERVER (to keep Render happy) ---
 app = Flask('')
@@ -28,6 +33,7 @@ def start_web_server():
 # --- DISCORD BOT CONFIGURATION ---
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHANNEL_ID_TO_RENAME = int(os.getenv("CHANNEL_ID_TO_RENAME", 0))
+
 
 COINGECKO_ID = "wemix-token"
 VS_CURRENCY = "usd"

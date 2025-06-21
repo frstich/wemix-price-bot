@@ -20,4 +20,4 @@ COPY . .
 
 # 6. Specify the command to run when the container starts
 # This will execute your bot script.
-CMD ["python", "bot.py"]
+CMD ["python", "-u", "bot.py"]

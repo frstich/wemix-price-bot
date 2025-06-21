@@ -74,9 +74,19 @@ async def on_ready():
 
 # --- MAIN EXECUTION ---
 if __name__ == "__main__":
+    print("--- SCRIPT STARTING ---") # <-- ADD THIS
+
     if not BOT_TOKEN or CHANNEL_ID_TO_RENAME == 0:
         print("!!! CONFIGURATION ERROR !!!")
         print("You must set BOT_TOKEN and CHANNEL_ID_TO_RENAME in your Coolify Environment Variables.")
     else:
-        # Just start the bot directly. No web server needed!
-        client.run(BOT_TOKEN)
+        print("Configuration loaded successfully.") # <-- ADD THIS
+        print(f"Target Channel ID: {CHANNEL_ID_TO_RENAME}") # <-- ADD THIS
+        
+        try:
+            print("Attempting to run the bot...") # <-- ADD THIS
+            # Just start the bot directly. No web server needed!
+            client.run(BOT_TOKEN)
+        except Exception as e:
+            # This will catch any errors during login or connection
+            print(f"!!! An error occurred in client.run(): {e} !!!") # <-- ADD THIS

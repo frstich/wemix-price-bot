@@ -2,32 +2,12 @@ import discord
 import requests
 import asyncio
 import os
-from flask import Flask
 from threading import Thread
 from dotenv import load_dotenv
 
 
 # Load environment variables from .env file
 load_dotenv()
-
-# --- FLASK WEB SERVER (to keep Render happy) ---
-app = Flask('')
-
-
-@app.route('/')
-def home():
-    return "I am alive and the bot is running!"
-
-
-def run_flask_app():
-    # The host must be '0.0.0.0' to be reachable by Render
-    app.run(host='0.0.0.0', port=8080)
-
-
-def start_web_server():
-    """Starts the Flask web server in a separate thread."""
-    server_thread = Thread(target=run_flask_app)
-    server_thread.start()
 
 
 # --- DISCORD BOT CONFIGURATION ---
@@ -112,8 +92,6 @@ if __name__ == "__main__":
         print("!!! CONFIGURATION ERROR !!!")
         print("You must set BOT_TOKEN and CHANNEL_ID_TO_RENAME in the Render Environment Variables.")
     else:
-        # Start the web server to keep Render happy
-        start_web_server()
 
         # Start the Discord bot
         client.run(BOT_TOKEN)
